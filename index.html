@@ -2075,6 +2075,7 @@
 #bf-hero .bf-hero__overview {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-xl);
   padding: var(--space-2xl) 0;
   margin-top: var(--space-xl);
@@ -2245,9 +2246,14 @@
 
 #bf-hero .bf-hero__testimonials-premium {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: clamp(1.5rem, 3vw, 2rem);
   margin-top: var(--space-lg);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #bf-hero .bf-hero__testimonial-card {
@@ -3187,11 +3193,13 @@
 
 #bf-hero .bf-hero__overview-card--slim {
   max-width: 700px;
+  width: 100%;
   margin: 0 auto;
   padding: clamp(1.25rem, 3vw, 1.75rem);
   background: linear-gradient(145deg, #FDF8F4 0%, #FEFCFA 100%);
   border-radius: 16px;
   border: 1px solid rgba(18, 63, 58, 0.06);
+  box-sizing: border-box;
 }
 
 #bf-hero .bf-hero__overview-card--slim .bf-hero__overview-title {
@@ -3387,28 +3395,28 @@
 
 <script>
   function getHeight() {
-    const b = document.body;
-    const e = document.documentElement;
+    const b = document.body
+    const e = document.documentElement
     return Math.max(
       b.scrollHeight, b.offsetHeight,
       e.clientHeight, e.scrollHeight, e.offsetHeight
-    );
+    )
   }
 
   function sendHeight() {
-    parent.postMessage({ type: "setHeight", height: getHeight() }, "*");
+    parent.postMessage({ type: "setHeight", height: getHeight() }, "*")
   }
 
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
+  window.addEventListener("load", sendHeight)
+  window.addEventListener("resize", sendHeight)
 
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(sendHeight);
+    document.fonts.ready.then(sendHeight)
   }
 
-  setTimeout(sendHeight, 200);
-  setTimeout(sendHeight, 800);
-  setTimeout(sendHeight, 1500);
+  setTimeout(sendHeight, 200)
+  setTimeout(sendHeight, 800)
+  setTimeout(sendHeight, 1500)
 
-  new ResizeObserver(sendHeight).observe(document.body);
+  new ResizeObserver(sendHeight).observe(document.body)
 </script>
